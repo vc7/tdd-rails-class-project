@@ -2,11 +2,12 @@ require 'test_helper'
 
 class ProductsTest < ActionDispatch::IntegrationTest
 	test "can add product successfully" do
-		count1 = Product.count
+		# 現在直接從工廠女孩取資料
+		# create 因為有在小幫手載入，所以不用從 FG 取
+		# （待確認）放在 Product.count 會造成多算一個，所以拉到前面來
+		book = create(:php_book)
 
-		# 從 fixture/products.yml 裡面取得 :php 物件
-		# test 會去找同名的 yml 檔案
-		book = products(:php)
+		count1 = Product.count
 
 		post '/products', product: {name:book.name, price:book.price}
 		assert_redirected_to '/products' # 期望會轉址到 /products
