@@ -6,5 +6,7 @@ class StaticPagesControllerTest < ActionController::TestCase
 	test "should get contact page" do
 		get :contact
 		assert_response :success
+		assert_select 'title', 'Hello, Ruby'
+		assert_select 'h1', 'Ruby on Rails'
 	end
 end
