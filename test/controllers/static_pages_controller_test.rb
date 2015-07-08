@@ -9,4 +9,12 @@ class StaticPagesControllerTest < ActionController::TestCase
 		assert_select 'title', 'Hello, Ruby'
 		assert_select 'h1', 'Ruby on Rails'
 	end
+
+	# 練習
+	test "should get help page" do
+		get :help
+		assert_response :success
+		assert_select 'title', 'Help Us'
+		assert_select 'h1', 'Help Us'
+	end
 end
