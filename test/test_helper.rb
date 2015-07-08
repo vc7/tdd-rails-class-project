@@ -7,6 +7,9 @@ require "minitest/reporters"
 Minitest::Reporters.use!
 
 class ActiveSupport::TestCase
+  # 載入 Factory Girl 的 module
+  include FactoryGirl::Syntax::Methods  
+
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
