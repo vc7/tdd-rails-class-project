@@ -3,7 +3,10 @@ class ProductsController < ApplicationController
 	end
 
 	def create
-		product = Product.new(params[:product])
+		# 因為強參數(strong parameters)的關係，需要加上 permit
+		clean_params = params.require(:product).permit(:name, :price)
+
+		product = Product.new(clean_params)
 
 		# 呼叫 save 方法 就會存進去
 		product.save
